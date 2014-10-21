@@ -46,6 +46,7 @@ The provided recipes are `dse::cassandra`, `dse::solr`, and `dse::hadoop`
 * `dse::cassandra` will provision DSE as a cassandra node.
 * `dse::solr` will provision DSE with solr enabled.
 * `dse::hadoop` will provision DSE with hadoop enabled.
+* `dse::opscenter` will deploy an opscenter server
 
 There are also recipes that should not be called directly that are used for configuration.
 * `dse::default` sets up the templates
@@ -150,6 +151,9 @@ This portion is under construction. SSL does not currently 100% work.
  * `node["cassandra"]["dse"]["keystore"]` (default: `#{node["cassandra"]["dse"]["cassandra_ssl_dir"]}/#{node["hostname"]}.keystore`): keystore name
  * `node["cassandra"]["dse"]["truststore"]` (default: `#{node["cassandra"]["dse"]["cassandra_ssl_dir"]}/#{node["hostname"]}.truststore`): truststore name
 
+### opscenter.rb
+* `node['opscenter']['version']` (default: `5.0.1`) select a version of opscenter server to install
+
 ### datastax-agent.rb
 These attributes are used to conigure the datastax-agent. This is used with Datastax Opscenter.
 
@@ -157,6 +161,8 @@ These attributes are used to conigure the datastax-agent. This is used with Data
 * `node["datastax-agent"]["version"]` (default: `4.1.1-1`): the version of the datastax agent to install
 * `node["datastax-agent"]["conf_dir"]` (default: `/var/lib/datastax-agent/conf`): where the datastax-agent conf file is
 * `node["datastax-agent"]["opscenter_ip"]` (default: `192.168.32.3`): the Opscenter IP to connect to
+* `node['datastax-agent']['role_based_opscenter']` (default:  `false`): Set to true to search for opscenter based on role:opscenter
+* `node['datastax-agent']['opscenter_role']`  (default: `role:opscenter`): change to a diffrent serch critery to report opscenter server
 
 
 ## Dependencies
