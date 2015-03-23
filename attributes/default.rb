@@ -26,9 +26,6 @@ default['cassandra']['packages']               = ['dse-libcassandra',
                                                   'dse-libspark',
                                                   'dse-full'
                                                  ]
-if node['cassandra']['dse_version'].match(/4\.0.*/)
-  default['cassandra']['packages'].delete('dse-libspark')
-end
 
 default['cassandra']['user']                   = 'cassandra'
 default['cassandra']['group']                  = 'cassandra'

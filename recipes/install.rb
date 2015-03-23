@@ -24,6 +24,11 @@ if File.exist?('/usr/bin/dse')
   end
 end
 
+# dse-libspark was not included in the 4.0.x version of dse
+if node['cassandra']['dse_version'].match(/4\.0.*/)
+  default['cassandra']['packages'].delete('dse-libspark')
+end
+
 # install the dse-full package
 case node['platform']
 # make sure not to overwrite any conf files on upgrade
