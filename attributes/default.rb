@@ -23,10 +23,11 @@ default['cassandra']['packages']               = ['dse-libcassandra',
                                                   'dse-libsqoop',
                                                   'dse-pig',
                                                   'dse-demos',
+                                                  'dse-libspark',
                                                   'dse-full'
                                                  ]
-unless node['cassandra']['dse_version'].match(/4\.0.*/)
-  default['cassandra']['packages'] = ['dse-libspark']
+if node['cassandra']['dse_version'].match(/4\.0.*/)
+  default['cassandra']['packages'].delete('dse-libspark')
 end
 
 default['cassandra']['user']                   = 'cassandra'
