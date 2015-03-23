@@ -2,6 +2,7 @@
 # Install java
 include_recipe 'dse::_repo'
 include_recipe 'java' if node['dse']['manage_java']
+include_recipe 'dse::datastax_agent' if node['datastax-agent']['enabled']
 
 # Check for existing dse version and the version chef wants
 # This will stop DSE before doing an upgrade (if we let chef do the upgrade)
@@ -60,6 +61,3 @@ directory node['cassandra']['commit_dir'] do
   recursive true
   action :create
 end
-
-# do you want the datastax-agent for opscenter?
-include_recipe 'dse::datastax_agent' if node['datastax-agent']['enabled']
