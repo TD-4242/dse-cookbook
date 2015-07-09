@@ -1,5 +1,6 @@
 
 # Set up the datastax repo in yum or apt depending on the OS
+    puts node['cassandra']['dse']['debian_repo_url_key']
 case node['platform']
 when 'ubuntu', 'debian'
   include_recipe 'apt'

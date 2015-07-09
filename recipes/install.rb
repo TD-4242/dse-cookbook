@@ -37,7 +37,7 @@ when 'ubuntu', 'debian'
     package install do
       version node['cassandra']['dse_version']
       action :install
-      options '-o Dpkg::Options::="--force-confold"'
+      options '-o Dpkg::Options::="--force-confold" --force-yes'
     end
   end
 when 'redhat', 'centos', 'fedora', 'scientific', 'amazon'
