@@ -20,6 +20,7 @@ include_recipe 'dse::_repo'
 
 package 'opscenter' do
   version node['opscenter']['version']
+  options '--force-yes'
   action :install
 end
 
